@@ -24,47 +24,92 @@ let employee: [number, string][] = [
 // union
 // we could add multiple types for each variable
 
-let product_id:number | string = 22
-product_id = "22"
+let product_id: number | string = 22;
+product_id = "22";
 
 // Enum
 // we could define a set of named constants
 enum direction_1 {
-    up,
-    down,
-    left,
-    right
+  up,
+  down,
+  left,
+  right,
 }
 enum direction_2 {
-    up="UP",
-    down="DOWN",
-    left = "LEFT",
-    right = "RIGHT"
+  up = "UP",
+  down = "DOWN",
+  left = "LEFT",
+  right = "RIGHT",
 }
-console.log(direction_1.right) // output 3 as it take default values from 0 and we could set values to them
+console.log(direction_1.right); // output 3 as it take default values from 0 and we could set values to them
 
 // objects
- 
-const user:{id:number,name:string} = {id:5,name:"hossam"}
+
+const user: { id: number; name: string } = { id: 5, name: "hossam" };
+
 // or
 
-type user = {id:number,name:string}
-const user_2:user={id:5,name:"hossam"}
+type user = { id: number; name: string };
+const user_2: user = { id: 5, name: "hossam" };
 
 // type assertion
 // we could change the type of a variable when we assign it to another one
 
-let cid:any = 1
-let customer_id = cid as number
+let cid: any = 1;
+let customer_id = cid as number;
+
 //or
-let customer_id1 = <number>cid 
+
+let customer_id1 = <number>cid;
 
 // functions
-const addNum = (x:number,y:number):number =>{
-return x+y
-}
- // if it won't return any thing
+// we define the type of the return value
+const addNum = (x: number, y: number): number => {
+  return x + y;
+};
+// if it won't return anything we define the typeof output to be void
 
- const logMessage = (message:string | number):void =>{
-    console.log(message)
-    }
+const logMessage = (message: string | number): void => {
+  console.log(message);
+};
+
+//Interfaces
+
+// it's like type but you can't use it with primitive types or unions it's preferred to be used with objects
+interface userInterface {
+  // if we want to make a constant value so it won't be changed if user types for ex. user_1.id = 5
+  readonly id: number;
+  name: string;
+  // if we want to make value of a key to be optional
+  age?: number;
+}
+
+const user_1: userInterface = {
+  id: 1,
+  name: "hossam",
+};
+interface mathFunc {
+  (x: number, y: number): number;
+}
+
+const add: mathFunc = (x: number, y: number): number => x + y;
+const sub: mathFunc = (x: number, y: number): number => x - y;
+
+// classes
+class Person {
+  // the default of those variables modifiers is public but we could set them to 
+  // private : which means it's accessible within the class
+  // protected : which means it's accessible within the class or any extended class (subclass)
+  id: number;
+ private name: string;
+protected  age: number;
+  job?: string;
+  constructor(id: number, name: string, age: number, job?: string) {
+    this.id = id;
+    this.name = name;
+    this.age = age;
+    this.job = job;
+  }
+}
+const hossam = new Person(1,"hossan",27)
+console.log(hossam.age)

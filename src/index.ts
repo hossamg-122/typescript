@@ -97,12 +97,12 @@ const sub: mathFunc = (x: number, y: number): number => x - y;
 
 // classes
 class Person {
-  // the default of those variables modifiers is public but we could set them to 
+  // the default of those variables modifiers is public but we could set them to
   // private : which means it's accessible within the class
   // protected : which means it's accessible within the class or any extended class (subclass)
   id: number;
- private name: string;
-protected  age: number;
+  private name: string;
+  protected age: number;
   job?: string;
   constructor(id: number, name: string, age: number, job?: string) {
     this.id = id;
@@ -111,5 +111,4 @@ protected  age: number;
     this.job = job;
   }
 }
-const hossam = new Person(1,"hossan",27)
-console.log(hossam.age)
+const hossam = new Person(1, "hossan", 27);

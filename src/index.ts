@@ -96,7 +96,13 @@ const add: mathFunc = (x: number, y: number): number => x + y;
 const sub: mathFunc = (x: number, y: number): number => x - y;
 
 // classes
-class Person {
+
+interface personInterface {
+  id: number;
+  job?: string;
+  register(): string;
+}
+class Person implements personInterface {
   // the default of those variables modifiers is public but we could set them to
   // private : which means it's accessible within the class
   // protected : which means it's accessible within the class or any extended class (subclass)
@@ -110,5 +116,34 @@ class Person {
     this.age = age;
     this.job = job;
   }
+  register() {
+    return `${this.name} is now registered`;
+  }
 }
+
 const hossam = new Person(1, "hossan", 27);
+
+// subclasses
+class Employee extends Person {
+  position: string;
+  constructor(
+    id: number,
+    name: string,
+    age: number,
+    position: string,
+    job?: string
+  ) {
+    super(id, name, age, job);
+    this.position = position;
+  }
+}
+const emp = new Employee(1, "zizo", 28, "team leader", "civil engineer");
+
+// generics
+// we use it to make generic types
+
+const getArray = <T>(items:T[]):T[] => new Array().concat(items)
+let numArr = getArray<number>([1,2,3,4,5,6])
+let strArr = getArray<string>(["dfdf","dfdfdf","dfdfdf"])
+numArr.push(1)
+strArr.push("dfdfdf")

@@ -142,8 +142,8 @@ const emp = new Employee(1, "zizo", 28, "team leader", "civil engineer");
 // generics
 // we use it to make generic types
 
-const getArray = <T>(items:T[]):T[] => new Array().concat(items)
-let numArr = getArray<number>([1,2,3,4,5,6])
-let strArr = getArray<string>(["dfdf","dfdfdf","dfdfdf"])
-numArr.push(1)
-strArr.push("dfdfdf")
+const getArray = <T>(items: T[]): T[] => new Array().concat(items);
+let numArr = getArray<number>([1, 2, 3, 4, 5, 6]);
+let strArr = getArray<string>(["dfdf", "dfdfdf", "dfdfdf"]);
+numArr.push(1);
+strArr.push("dfdfdf");
